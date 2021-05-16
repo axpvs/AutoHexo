@@ -2,7 +2,6 @@ name: Use Actions Deploy Hexo To Github
 
 on:
   push:
-    branches: master
 
 jobs:
   Instance:
