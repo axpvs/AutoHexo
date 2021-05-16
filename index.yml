@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Install hexo
-        run: npm install hexo-cli -g
+        run: sudo npm install hexo-cli -g
 
       - name: Generate
         env:
@@ -31,6 +31,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           publish_dir: ./blog/public
-          publish_branch: gh-pages
-          personal_token: ${{ secrets.D }}
-          
+          external_repository: ${{ secrets.D }}
+          personal_token: ${{ secrets.E }}
