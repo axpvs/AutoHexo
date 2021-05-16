@@ -18,10 +18,7 @@ jobs:
           THEME_WAREHOUSE: ${{ secrets.B }}
         run: |
           git clone -b master $SOURCE_CODE gh
-          hexo init blog
-          rm blog/*
-          mv gh/* blog
-          cd blog/themes
+          cd gh/themes
           git clone $THEME_WAREHOUSE theme
           cd ../
           ${{ secrets.C }}
@@ -30,6 +27,6 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          publish_dir: ./blog/public
+          publish_dir: ./gh/public
           external_repository: ${{ secrets.D }}
           personal_token: ${{ secrets.E }}
