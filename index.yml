@@ -24,7 +24,7 @@ jobs:
           git clone $THEME_WAREHOUSE themes/themes
           ${{ secrets.OTHER }}
           hexo generate
-  
+ 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
