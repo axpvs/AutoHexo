@@ -13,19 +13,22 @@ jobs:
 
       - name: Generate
         env:
-          SOURCE_CODE: ${{ secrets.A }}
-          THEME_WAREHOUSE: ${{ secrets.B }}
+          SOURCE_CODE: ${{ secrets.CODE }}
+          THEME_WAREHOUSE: ${{ secrets.THEME }}
         run: |
           git clone -b master $SOURCE_CODE gh
-          cd gh/themes
-          git clone $THEME_WAREHOUSE theme
+          cd gh
+          npm install
+          rm -rf .github
+          rm -rf .gitignore
+          git clone $THEME_WAREHOUSE themes/themes
           cd ../
-          ${{ secrets.C }}
-          hexo deploy
+          ${{ secrets.OTHER }}
+          hexo g
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           publish_dir: ./gh/public
-          external_repository: ${{ secrets.D }}
-          personal_token: ${{ secrets.E }}
+          publish_branch: hexo
+          personal_token: ${{ secrets.TOKEN }}
